@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: yavor
+data:
+  config.json: |
+    {
+      "databases": [
+        {
+          "title": "Yavor",
+          "url": "http://{{ .Release.Name }}-postgrest:3000",
+          "publicDbAcessType": "read",
+          "foreignKeySearch": true,
+          "primaryKeyFunction": true,
+          "regexSupport": false
+        }
+      ],
+      "logoUrl": null,
+      "seq_column_names": [
+        "alignment_sequence",
+        "nucleotide_sequence",
+        "aminoacid_sequence",
+        "nucleotide_seq",
+        "amino_acid_seq",
+        "nuc_seq",
+        "aa_seq",
+        "dna_seq",
+        "protein_seq",
+        "prot_seq",
+        "n_seq",
+        "p_seq",
+        "a_seq",
+        "seq",
+        "sequence"
+      ],
+      "errorMsg": "ERROR"
+    }

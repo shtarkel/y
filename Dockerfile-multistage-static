@@ -1,0 +1,13 @@
+#Stataic build
+FROM node:10-slim AS stage1
+WORKDIR /
+COPY package.json package-lock.json ./
+RUN npm i
+COPY . ./
+RUN npm run build
+
+FROM node:10-slim
+WORKDIR /
+RUN npm install -g serve
+COPY --from=stage1 /build/ ./
+CMD ["serve","-n"]
